@@ -1,7 +1,7 @@
 package com.example.demo.staffTests;
 
-import com.example.demo.staff.Staff;
-import com.example.demo.staff.StaffService;
+import com.example.demo.domain.model.Staff;
+import com.example.demo.domain.service.StaffService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

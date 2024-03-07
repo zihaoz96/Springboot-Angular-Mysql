@@ -1,6 +1,6 @@
 package com.example.demo.accountTests;
 
-import com.example.demo.compte.AccountService;
+import com.example.demo.domain.service.AccountService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

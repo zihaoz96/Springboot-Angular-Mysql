@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "@ngrx/store": "^17.1.1",
+    "@ngrx/store-devtools": "^17.1.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.5.0",

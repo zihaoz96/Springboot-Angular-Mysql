@@ -1,15 +1,17 @@
-package com.example.demo.user;
+package com.example.demo.domain.service;
 
+import com.example.demo.domain.model.User;
+import com.example.demo.port.persistence.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final UserJpaRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserJpaRepository userRepository) {
         this.userRepository = userRepository;
     }
 

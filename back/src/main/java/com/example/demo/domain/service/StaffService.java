@@ -1,6 +1,7 @@
-package com.example.demo.staff;
+package com.example.demo.domain.service;
 
-import jakarta.persistence.EntityManager;
+import com.example.demo.domain.model.Staff;
+import com.example.demo.port.persistence.StaffJpaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class StaffService {
 
     @Autowired
-    private StaffRepository staffRepository;
+    private StaffJpaRepository staffRepository;
 
     public long getNumberOfStaff(){
         return staffRepository.count();

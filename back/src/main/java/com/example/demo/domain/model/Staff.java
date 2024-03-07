@@ -1,4 +1,4 @@
-package com.example.demo.staff;
+package com.example.demo.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

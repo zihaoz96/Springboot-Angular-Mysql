@@ -1,6 +1,7 @@
-package com.example.demo.user;
+package com.example.demo.adapter.web.controller;
 
-import com.example.demo.AjaxResponse;
+import com.example.demo.application.AjaxResponse;
+import com.example.demo.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.example.demo.userTests;
 
-import com.example.demo.user.UserService;
+import com.example.demo.domain.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

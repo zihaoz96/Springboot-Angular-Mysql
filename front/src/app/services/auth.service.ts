@@ -3,13 +3,20 @@ import { RequestService } from './request.service';
 import { NotifService } from './notif.service';
 import { NotifType } from '../constant/NotifType';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AuthState } from '../redux/auth.reducer';
+import { Observable } from 'rxjs';
+import * as AuthActions from '../redux/auth.actions'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  isAuthenticated$: Observable<boolean> | undefined;
 
-  constructor(private requestService:RequestService, private notifService: NotifService, private router:Router) { }
+  constructor(private requestService:RequestService, private notifService: NotifService, private router:Router, private store: Store<{ auth: AuthState }>) {
+    this.isAuthenticated$ = this.store.select((state) => state.auth.isAuthenticated);
+  }
 
   login(username: string, password: string) {
     const postData = { username: username, password: password };
@@ -24,7 +31,7 @@ export class AuthService {
         this.notifService.setMessageType(NotifType.FAILED)
       }else{
         this.notifService.setMessageType(NotifType.SUCCESS)
-        sessionStorage.setItem("user", username)
+        this.store.dispatch(AuthActions.loginSuccess());
         this.router.navigateByUrl('/employees')
       }
 
@@ -35,11 +42,11 @@ export class AuthService {
   }
 
   logout() {
-    sessionStorage.removeItem("user")
     this.router.navigateByUrl('/login')
+    this.store.dispatch(AuthActions.logout());
   }
 
-  getStatusAuth(): string|null {
-    return sessionStorage.getItem("user")
+  getStatusAuth(): boolean  {
+    return this.store.selectSnapshot((state) => state.auth.isAuthenticated);
   }
 }

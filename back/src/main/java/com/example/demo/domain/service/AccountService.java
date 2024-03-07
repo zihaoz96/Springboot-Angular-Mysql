@@ -1,27 +1,25 @@
-package com.example.demo.compte;
+package com.example.demo.domain.service;
 
-import jakarta.persistence.EntityManager;
+import com.example.demo.domain.model.Account;
+import com.example.demo.port.persistence.AccountJpaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @Service
 public class AccountService {
-
-    private final EntityManager entityManager;
+    private final AccountJpaRepository accountJpaRepository;
 
     @Autowired
-    public AccountService(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public AccountService(AccountJpaRepository accountJpaRepository) {
+        this.accountJpaRepository = accountJpaRepository;
     }
 
     @Transactional
     public String updateAcc(int id, String fromAcc, String toAcc, double amount)  {
-        Account account = entityManager.find(Account.class, id);
+        Account account = accountJpaRepository.findById(id);
 
         if(account == null) return "Invalid id";
 

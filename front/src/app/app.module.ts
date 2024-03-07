@@ -15,6 +15,9 @@ import { EmployeeFormComponent } from './components/employee-form/employee-form.
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PageEmployeeListComponent } from './pages/page-employee-list/page-employee-list.component';
 import { HeaderComponent } from './components/header/header.component';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './redux/auth.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,11 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    StoreModule.forRoot({ auth:authReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,12 @@
-package com.example.demo.staff;
+package com.example.demo.adapter.web.controller;
 
-import com.example.demo.AjaxResponse;
+import com.example.demo.application.AjaxResponse;
+import com.example.demo.domain.model.Staff;
+import com.example.demo.domain.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.example.demo.compte;
+package com.example.demo.adapter.web.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
