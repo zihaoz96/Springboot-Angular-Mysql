@@ -1,0 +1,13 @@
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <form class="border border-1 rounded p-4" [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+            <label for="usernameLabel" class="form-label">Username</label>
+            <input type="text" class="form-control" id="usernameLabel" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label for="passwordLabel" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passwordLabel" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

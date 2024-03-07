@@ -1,0 +1,36 @@
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of employeeList" [routerLink]="['/employees/'+staff.id]" routerLinkActive="router-link-active" >
+        <th scope="row">{{staff.id}}</th>
+        <td>{{staff.firstName}}</td>
+        <td>{{staff.lastName}}</td>
+        <td>{{staff.age}}</td>
+      </tr>
+    </tbody>
+</table>
+
+<nav class="d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage == 0" (click)="pageChange(currentPage - 1)">
+      <a class="page-link" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item" 
+    [ngClass]="{'active': i == currentPage}" 
+    *ngFor="let _ of iterateTimes(); let i = index;" 
+    (click)="pageChange(i)">
+      <a class="page-link">{{ i+1 }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage == pageTotal - 1" (click)="pageChange(currentPage + 1)">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
