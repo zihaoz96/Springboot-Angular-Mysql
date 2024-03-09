@@ -15,6 +15,7 @@ export class AuthService {
   isAuthenticated$: Observable<boolean> | undefined;
 
   constructor(private requestService:RequestService, private notifService: NotifService, private router:Router, private store: Store<{ auth: AuthState }>) {
+    if(sessionStorage.getItem("user")) this.store.dispatch(AuthActions.loginSuccess());
     this.isAuthenticated$ = this.store.select((state) => state.auth.isAuthenticated);
   }
 
@@ -32,6 +33,8 @@ export class AuthService {
       }else{
         this.notifService.setMessageType(NotifType.SUCCESS)
         this.store.dispatch(AuthActions.loginSuccess());
+
+        sessionStorage.setItem("user", username)
         this.router.navigateByUrl('/employees')
       }
 
@@ -44,9 +47,11 @@ export class AuthService {
   logout() {
     this.router.navigateByUrl('/login')
     this.store.dispatch(AuthActions.logout());
+
+    sessionStorage.removeItem("user")
   }
 
-  getStatusAuth(): boolean  {
-    return this.store.selectSnapshot((state) => state.auth.isAuthenticated);
+  getStatusAuth(): Observable<boolean> | undefined  {
+    return this.isAuthenticated$
   }
 }

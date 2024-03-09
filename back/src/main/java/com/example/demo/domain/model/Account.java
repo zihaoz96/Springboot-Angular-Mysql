@@ -1,12 +1,15 @@
 package com.example.demo.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.lang.reflect.Field;
 import java.util.Optional;
 
 @Entity
+@Getter
+@Setter
 public class Account {
     @Id
     private Integer id;
@@ -14,6 +17,7 @@ public class Account {
     private Double livretA;
 
     private Double current;
+
 
     public Account() {
     }
@@ -29,22 +33,6 @@ public class Account {
                 ", livretA=" + livretA +
                 ", current=" + current +
                 '}';
-    }
-
-    public Double getLivretA() {
-        return livretA;
-    }
-
-    public void setLivretA(Double livretA) {
-        this.livretA = livretA;
-    }
-
-    public Double getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(Double current) {
-        this.current = current;
     }
 
     public Optional<Object> getFieldValue(String fieldName)  {

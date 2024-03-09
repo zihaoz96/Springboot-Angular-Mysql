@@ -1,1 +1,33 @@
-<p>employee-form works!</p>
+<div class="container">
+    <h1>Virement</h1>
+
+    <form (ngSubmit)="submit()">
+        <h4>Depuis quel compte ?</h4>
+        <div class="d-flex align-items-center mb-2">
+            <select class="form-select w-75" name="selectFrom" [(ngModel)]="selectFrom" (change)="onSelect()">
+                <option [value]="type.value" *ngFor="let type of selectOptionFrom">{{type.label}}</option>
+            </select>
+            <span class="ms-2" *ngIf="selectFrom != ''">Montant reste: {{staff?.account[selectFrom]}}</span>
+        </div>
+
+
+        <h4>
+            Vers quel bénéficiaire ?
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" id="swap" class="ms-2" (click)="exchange()"><path d="M32 34.02V20h-4v14.02h-6L30 42l8-7.98h-6zM18 6l-8 7.98h6V28h4V13.98h6L18 6z"></path><path fill="none" d="M0 0h48v48H0z"></path></svg> 
+        </h4>
+        <div class="d-flex align-items-center mb-2">
+            <select class="form-select w-75" name="selectTo" [(ngModel)]="selectTo" (change)="onSelect()">
+                <option [value]="type.value" *ngFor="let type of selectOptionTo">{{type.label}}</option>
+            </select>
+            <span class="ms-2" *ngIf="selectTo != ''">Montant reste: {{staff?.account[selectTo]}}</span>
+        </div>
+
+        <h4>Montant transféré</h4>
+        <div class="input-group mb-4 w-25">
+            <input type="text" class="form-control" placeholder="0" [(ngModel)]="amount" name="amount" required min="0">
+            <span class="input-group-text">€</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Valide</button>
+    </form>
+</div>

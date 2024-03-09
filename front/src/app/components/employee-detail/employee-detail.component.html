@@ -1,1 +1,12 @@
-<p>employee-detail works!</p>
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h1>Infomation</h1>
+        <button class="btn">Retour</button>
+    </div>
+
+    Nom:<input class="form-control mb-2" type="text" [value]="staff?.firstName" readonly>
+    Prenom:<input class="form-control mb-2" type="text" [value]="staff?.lastName" readonly>
+    Age:<input class="form-control mb-2" type="text" [value]="staff?.age" readonly>
+    Email:<input class="form-control mb-2" type="text" [value]="staff?.email" readonly>
+    Numéro portable:<input class="form-control mb-2" type="text" [value]="staff?.phoneNumber" readonly>
+</div>

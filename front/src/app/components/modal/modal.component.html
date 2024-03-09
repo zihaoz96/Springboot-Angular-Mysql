@@ -1,0 +1,10 @@
+<div class="px-5 py-3">
+    <h3>Transféré information:</h3>
+    <p class="mb-0">{{selectFrom}} -> {{selectTo}}</p>
+    <p>Total: {{amount}}</p>
+
+    <div class="d-flex flex-row">
+        <button class="btn btn-secondary" (click)="dismiss()">Annuler</button>
+        <button class="btn btn-success ms-2" (click)="confirm()">Valide</button>
+    </div>
+</div>

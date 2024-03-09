@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NotifComponent } from './components/notif/notif.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { LoginComponent } from './components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { PageEmpoyeeDetailComponent } from './pages/page-employee-list/page-empoyee-detail/page-empoyee-detail.component';
@@ -18,6 +18,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './redux/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     NotifComponent,
     LoginComponent,
     HeaderComponent,
+    ModalComponent,
     EmployeeFormComponent,
     EmployeeListComponent,
     EmployeeDetailComponent,
@@ -37,6 +39,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     StoreModule.forRoot({ auth:authReducer }),
     StoreDevtoolsModule.instrument({

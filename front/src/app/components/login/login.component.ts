@@ -20,9 +20,10 @@ export class LoginComponent implements OnInit{
   constructor(private authService: AuthService, private router:Router){
     this.loginForm = new FormGroup({})
     // is login navigate to list employees
-    if(authService.getStatusAuth()){
-      router.navigateByUrl('/employees')
-    }
+    authService.getStatusAuth()?.subscribe(state=>{
+      if(state) 
+        router.navigateByUrl('/employees')
+    })
   }
 
   ngOnInit(): void {

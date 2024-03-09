@@ -48,7 +48,7 @@ public class StaffController {
     }
 
     @GetMapping(value = "/staff/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public AjaxResponse getAllStaff(@PathVariable Integer id){
+    public AjaxResponse getStaffById(@PathVariable Integer id){
         try {
             Optional<Staff> staff = staffService.getStaffById(id);
             if(staff.isPresent()){

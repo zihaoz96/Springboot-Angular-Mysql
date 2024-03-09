@@ -1,2 +1,5 @@
-<app-employee-detail></app-employee-detail>
-<app-employee-form></app-employee-form>
+<div class="main">
+    <app-header></app-header>
+    <app-employee-detail [staff]="staff" *ngIf="staff != null"></app-employee-detail>
+    <app-employee-form [staff]="staff" *ngIf="staff != null"></app-employee-form>
+</div>

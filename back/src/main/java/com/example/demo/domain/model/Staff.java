@@ -1,10 +1,13 @@
 package com.example.demo.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Staff {
 
     @Id
@@ -15,65 +18,12 @@ public class Staff {
     private Integer age;
     private String phoneNumber;
     private String email;
-    private Integer accountId;
+
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     public Staff() {}
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
-    }
 
     @Override
     public String toString() {
@@ -84,7 +34,8 @@ public class Staff {
                 ", age=" + age +
                 ", phone='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", accoundId='" + accountId + '\'' +
+                ", accoundId='" + account.getId() + '\'' +
+                ", accoundCurrent='" + account.getCurrent() + '\'' +
                 '}';
     }
 }

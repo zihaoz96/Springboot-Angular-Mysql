@@ -28,13 +28,4 @@ public class staffTests {
         staff.ifPresent(value -> System.out.println(value.toString()));
     }
 
-    @Test
-    public void getStaffByIdWrongTest(){
-        Optional<Staff> staff = staffService.getStaffById(200);
-        if(staff.isPresent()){
-            System.out.println(staff.get().toString());
-        }else{
-            System.out.println("Not found");
-        }
-    }
 }

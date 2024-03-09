@@ -5,5 +5,5 @@ export interface Staff{
     age: number
     phoneNumber: string
     email: string
-    accountId: number
+    account: any
 }

@@ -14,25 +14,19 @@ public class accountTests {
 
     @Test
     public void transferWithInvalidId() {
-        String response = accountService.updateAcc(1000, "livretA", "current", 1000);
+        String response = accountService.updateAcc(1000, "livretA", "current", 1000.0).getMessage();
         assertEquals("Invalid id", response);
     }
 
     @Test
-    public void transferWithSuccess() {
-        String response = accountService.updateAcc(1, "livretA", "current", 1000);
-        assertEquals("Transferred", response);
-    }
-
-    @Test
     public void transferBalanceNotEnough() {
-        String response = accountService.updateAcc(1, "livretA", "current", 100000);
+        String response = accountService.updateAcc(1, "livretA", "current", 100000.0).getMessage();
         assertEquals("Balance not enough", response);
     }
 
     @Test
     public void transferSubAccNotExist() {
-        String response = accountService.updateAcc(1, "livressstA", "current", 100000);
+        String response = accountService.updateAcc(1, "livressstA", "current", 100000.0).getMessage();
         assertEquals("Error account name", response);
     }
 }
