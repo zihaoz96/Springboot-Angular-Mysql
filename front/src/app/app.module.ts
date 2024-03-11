@@ -4,43 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotifComponent } from './components/notif/notif.component';
-import { PageLoginComponent } from './pages/page-login/page-login.component';
-import { LoginComponent } from './components/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
-import { PageEmpoyeeDetailComponent } from './pages/page-employee-list/page-empoyee-detail/page-empoyee-detail.component';
-import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
-import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { PageEmployeeListComponent } from './pages/page-employee-list/page-employee-list.component';
-import { HeaderComponent } from './components/header/header.component';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './redux/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ModalComponent } from './components/modal/modal.component';
+import { PageLoginModule } from './pages/page-login/page-login.module';
+import { PageEmployeeListModule } from './pages/page-employee-list/page-employee-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotifComponent,
-    LoginComponent,
-    HeaderComponent,
-    ModalComponent,
-    EmployeeFormComponent,
-    EmployeeListComponent,
-    EmployeeDetailComponent,
-    PageLoginComponent,
-    PageNotFoundComponent,
-    PageEmployeeListComponent,
-    PageEmpoyeeDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
     CommonModule,
+    PageLoginModule,
+    PageEmployeeListModule,
     StoreModule.forRoot({ auth:authReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

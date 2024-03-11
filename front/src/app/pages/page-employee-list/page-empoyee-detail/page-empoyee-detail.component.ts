@@ -9,8 +9,8 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrl: './page-empoyee-detail.component.scss'
 })
 export class PageEmpoyeeDetailComponent{
-  idStaff: string | null = null;
-  staff:Staff | null = null
+  idStaff: string | any = null;
+  staff:Staff | any = null
   
   constructor(private requestService:RequestService, private route: ActivatedRoute){
     this.route.params.subscribe(params => {

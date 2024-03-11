@@ -2,25 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AuthGuard } from './shared/auth.guard';
-import { PageLoginComponent } from './pages/page-login/page-login.component';
-import { PageEmployeeListComponent } from './pages/page-employee-list/page-employee-list.component';
-import { PageEmpoyeeDetailComponent } from './pages/page-employee-list/page-empoyee-detail/page-empoyee-detail.component';
 
 const routes: Routes = [
-  { path: 'login', component: PageLoginComponent },
+  { 
+    path: 'login', 
+    loadChildren: () => import('./pages/page-login/page-login.module').then(m => m.PageLoginModule)
+  },
   {
     path: 'employees',
-    // canActivate: [AuthGuard], // if is login
-    children: [
-      { 
-        path: '', 
-        component: PageEmployeeListComponent 
-      },
-      {
-        path: ':id',
-        component: PageEmpoyeeDetailComponent,
-      },
-    ]
+    canActivate: [AuthGuard], // if is login
+    loadChildren: () => import('./pages/page-employee-list/page-employee-list.module').then(m => m.PageEmployeeListModule)
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

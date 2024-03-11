@@ -1,7 +1,7 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <h1>Infomation</h1>
-        <button class="btn">Retour</button>
+        <button class="btn text-info" [routerLink]="['/employees']" routerLinkActive="router-link-active" >Retour</button>
     </div>
 
     Nom:<input class="form-control mb-2" type="text" [value]="staff?.firstName" readonly>
