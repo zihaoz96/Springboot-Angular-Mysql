@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import axios from 'axios';
 import { NotifType } from 'src/app/constant/NotifType';
-import { AuthService } from 'src/app/services/auth.service';
 import { NotifService } from 'src/app/services/notif.service';
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../../redux/auth.actions'
+import { AuthState } from 'src/app/redux/auth.reducer';
 import { RequestService } from 'src/app/services/request.service';
 
 @Component({
@@ -17,10 +18,16 @@ export class LoginComponent implements OnInit{
   username: string = "";
   password: string = "";
 
-  constructor(private authService: AuthService, private router:Router){
+  constructor(
+    private notifService: NotifService, 
+    private router:Router, 
+    private requestService:RequestService, 
+    private store: Store<{ auth: AuthState }>
+  ){
+      
     this.loginForm = new FormGroup({})
     // is login navigate to list employees
-    authService.getStatusAuth()?.subscribe(state=>{
+    this.store.select(state => state.auth.isAuthenticated)?.subscribe(state=>{
       if(state) 
         router.navigateByUrl('/employees')
     })
@@ -44,7 +51,27 @@ export class LoginComponent implements OnInit{
       const username = this.loginForm.get("username")?.value
       const password = this.loginForm.get("password")?.value
 
-      this.authService.login(username, password)
+      const postData = { username: username, password: password };
+
+      this.requestService.post<any>('login', postData).then(response => {
+        console.log(response);
+        const data = response.data
+  
+        // Set notify message
+        if(data.code != 200){
+          this.notifService.setMessageType(NotifType.FAILED)
+        }else{
+          this.notifService.setMessageType(NotifType.SUCCESS)
+          this.store.dispatch(AuthActions.loginSuccess());
+  
+          sessionStorage.setItem("user", username)
+          this.router.navigateByUrl('/employees')
+        }
+  
+        // show notify message
+        this.notifService.setMessage(data.message)
+        this.notifService.show()
+      });
     }
   }
 }
