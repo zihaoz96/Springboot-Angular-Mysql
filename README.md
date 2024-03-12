@@ -3,6 +3,13 @@
 - Java 17
 - Mysql
 
+## Test
+In *back\src\test\java\com\example\demo\initialDatabase*
+
+Help you randomly generate the data(table) you need
+
+Please run this test file first if you need
+
 # Front
 - Angular 17.2.0
 - Redux (Manage Login Status)

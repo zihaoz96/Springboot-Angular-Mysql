@@ -1,13 +1,16 @@
 package com.example.demo.staffTests;
 
-import com.example.demo.domain.model.Staff;
-import com.example.demo.domain.service.StaffService;
+import com.example.demo.application.port.StaffService;
+import com.example.demo.domain.entity.Staff;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class staffTests {
@@ -17,14 +20,22 @@ public class staffTests {
 
     @Test
     public void getAllStaffTest(){
-        List<Staff> staffList = staffService.getAllStaffByPage(0, 10);
-        staffList.forEach(s -> System.out.println(s.toString()));
-        System.out.println(staffList.size());
+        Optional<List<Staff>> staffList = staffService.getAllStaffByPage(0, 10);
+        assertTrue(staffList.isPresent());
+        staffList.ifPresent(list -> list.forEach(s -> System.out.println(s.toString())));
     }
 
     @Test
-    public void getStaffByIdTest(){
+    public void getStaffByIdCorrectTest(){
         Optional<Staff> staff = staffService.getStaffById(2);
+        assertTrue(staff.isPresent());
+        staff.ifPresent(value -> System.out.println(value.toString()));
+    }
+
+    @Test
+    public void getStaffByIdInCorrectTest(){
+        Optional<Staff> staff = staffService.getStaffById(3333);
+        assertFalse(staff.isPresent());
         staff.ifPresent(value -> System.out.println(value.toString()));
     }
 
