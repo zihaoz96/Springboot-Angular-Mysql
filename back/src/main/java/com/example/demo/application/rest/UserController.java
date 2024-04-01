@@ -1,8 +1,8 @@
-package com.example.demo.infrastructure.web.controller;
+package com.example.demo.application.rest;
 
-import com.example.demo.application.port.UserService;
+import com.example.demo.domain.service.UserService;
+import com.example.demo.application.response.AjaxResponse;
 import com.example.demo.domain.entity.User;
-import com.example.demo.infrastructure.web.response.AjaxResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

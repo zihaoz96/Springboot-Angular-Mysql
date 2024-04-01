@@ -1,6 +1,6 @@
 package com.example.demo.accountTests;
 
-import com.example.demo.application.port.AccountService;
+import com.example.demo.domain.service.AccountService;
 import com.example.demo.domain.entity.Account;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

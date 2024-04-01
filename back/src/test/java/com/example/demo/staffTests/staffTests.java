@@ -1,6 +1,6 @@
 package com.example.demo.staffTests;
 
-import com.example.demo.application.port.StaffService;
+import com.example.demo.domain.service.StaffService;
 import com.example.demo.domain.entity.Staff;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

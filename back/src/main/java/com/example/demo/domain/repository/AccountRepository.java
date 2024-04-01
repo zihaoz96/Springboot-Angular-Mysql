@@ -1,9 +1,9 @@
-package com.example.demo.domain.port;
+package com.example.demo.domain.repository;
 
 import com.example.demo.domain.entity.Account;
 
 import java.util.Optional;
 
-public interface AccountRepositoryPort {
+public interface AccountRepository {
     Optional<Account> findById(int id);
 }

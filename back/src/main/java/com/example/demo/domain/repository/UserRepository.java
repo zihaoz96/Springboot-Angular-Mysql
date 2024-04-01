@@ -1,14 +1,13 @@
-package com.example.demo.application.port;
-
+package com.example.demo.domain.repository;
 
 import com.example.demo.domain.entity.User;
 
 import java.util.Optional;
 
 /**
- * 入站端口
+ * 出站端口
  *
  */
-public interface UserService {
+public interface UserRepository {
     Optional<User> findUser(String username, String password);
 }
